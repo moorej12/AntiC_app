@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<Title>Dose Adjustments</Title>
+	<!-- Contains the list of dose adjustment charts for selection -->
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/doses.js"></script>
+	<script type="text/javascript" src="js/remoteServer.js"></script>
+	<script type="text/javascript" src="Classes/drug.js"></script>
+	<script type="text/javascript" src="Classes/cypenzyme.js"></script>
+	<script type="text/javascript" src="Classes/oncologyuse.js"></script>
+	<script type="text/javascript" src="Classes/protocol.js"></script>
+	<script type="text/javascript" src="Classes/sideeffect.js"></script>
+	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testdoseadjustments.js"></script>
+	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
+	<script type="text/javascript" src="Tests/testcypenzyme.js"></script>
+	<script type="text/javascript" src="Tests/testoncologyuse.js"></script>
+	<script type="text/javascript" src="Tests/testprotocol.js"></script>
+	<script type="text/javascript" src="Tests/testdrug.js"></script>
+	<script type="text/javascript" src="Tests/testmenu.js"></script>
+	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
+</head>
+<body>
+	<!-- Start of dose page -->
+	<div data-role="page" id="dose-page">
+			<!-- Header -->
+			<div data-role="header">
+				<h1>Dose Adjustments</h1>
+			</div>
+
+			<!-- Body Content -->
+			<div data-role="bodyContent">
+				<ul id="menuList" data-role="listview" data-autodividers="false" data-filter="false" data-inset="true">
+				</ul>
+			</div>
+			<!-- Footer -->
+			<!-- JQuery navbar to navigate between therapeutics/doses/protocols/etc -->
+			<div data-role="footer" data-id="persistent-navbar" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar" data-iconpos="top">
+					<ul>
+						<li><a href="#" id='nav-1' data-prefetch="true" onClick="window.location.assign('drugmenu.html');" data-icon="pill">Drugs</a></li>
+						<li><a href="#" id='nav-2' data-prefetch="true" data-icon="mg" class="ui-btn-active ui-state-persist">Doses</a></li>
+						<li><a href="#" id='nav-3' data-prefetch="true" onClick="window.location.assign('interactions.html');" data-icon="interaction">Interactions</a></li>
+						<!-- <li><a href="protocols.html" data-prefetch="true" onClick=loadProtocolPage(this.href) data-icon="notebook"  class="ui-btn-active ui-state-persist">Protocols</a></li> -->
+						<li><a href="#" id='nav-4' data-prefetch="true" onClick="window.location.assign('about.html');" data-icon="info">About</a></li>
+					</ul>
+				</div>
+			</div>
+	</div>
+</body>
+<script>
+// onDeviceReady is executed when device is ready
+$(document).ready(function() {
+	// Making sure menuList is empty
+	$('#menuList').empty();
+	
+	// Populate the listview with the doses
+	populateDoseList(createDoseAdjustmentArray());
+});
+</script>
+</html>

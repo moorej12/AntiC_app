@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>About</title>
+	<!-- Contains extra miscellaneous information regarding the application -->
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+	
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" src="js/remoteServer.js"></script>
+</head>
+<body>
+	<div data-role="page" id="about-page">
+			<!-- Header -->
+			<div data-role="header">
+				<h1>About</h1>
+			</div>
+			
+			<!-- Body Content -->
+			<div data-role="bodyContent">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Disclaimer</h3>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;The contents of the AntiC App are intended to assist non-oncology pharmacists & 
+					allied health-care professionals to identify problems associated with oral chemotherapy. While there is public access, 
+					it must be understood that the information is not intended as medical advice, which should be provided by a clinician, 
+					with the health information, necessary to identify the individual's requirements. The information provided on the AntiC 
+					App is intended primarily for use in Canada, and may not apply to other jurisdictions. The authors disclaim any liability, 
+					loss, injury or damage incurred as a consequence, directly or indirectly, by the use and or application of any of the 
+					contents of the AntiC App.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>Legend</h3>
+					<div style="clear: left;">
+				    	<img src="Icons/highicon2.png" height="20px" align="left">
+				    	<p>&nbsp- Represents a drug or cyp enzyme with a high risk.</p>
+				    </div>
+				    <div style="clear: left;">
+			    		<img src="Icons/moderateicon2.png" height="20px" align="left">
+			    		<p>&nbsp- Represents a drug or cyp enzyme with a moderate risk.</p>
+			    	</div>
+			    	<div style="clear: left;">
+		    			<img src="Icons/lowicon2.png" height="20px" align="left">
+		    			<p>&nbsp- Represents a drug or cyp enzyme with a low risk.</p>
+		    		</div>
+		    		<div style="clear: left;">
+		    			<img src="Icons/interaction4image.png" height="20px" align="left">
+		    			<p>&nbsp- Represents a cyp enzyme with a unknown interaction.</p>
+		    		</div>
+				</div>
+				<div data-role="collapsible">
+					<h3>Glossary</h3>
+					<div id="glossary_div"></div>
+				</div>
+				<div data-role="collapsible">
+					<h3>The Team</h3>
+					<b>Project Conception and Medical Consultants:</b>
+					<ul>
+						<li><b>Tibor van Rooij</b>, Ph.D. Candidate, Pharmacy and Pharmaceutical Sciences, University of Alberta</li>
+						<li><b>Serena Rix</b>, Pharm.D., Grey Nuns Community Hospital, Edmonton, Alberta</li>
+						<li><b>Sharon Marsh</b>, Ph.D., Assistant Professor, Pharmacy and Pharmaceutical Sciences, University of Alberta</li>
+					</ul>
+					<b>Development Team:</b>
+					<ul>
+						<li><b>James Cadek</b> - University of Alberta</li>
+						<li><b>Zachary Lubinski</b> - University of Alberta</li>
+						<li><b>James Moore</b> - University of Alberta</li>
+						<li><b>Kyle Ross</b> - University of Alberta</li>
+						<li><b>Tanvir Sajed</b> - University of Alberta</li>
+						<li><b>Jeremy Smereka</b> - University of Alberta</li>
+						<li><b>Scott Vig</b> - University of Alberta</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h3>Resources</h3>
+					<ul>
+						<li><a href="#" onclick="window.open('http://oralchemotherapy.ca/wordpress/', '_system');">Oral Chemotherapy Website</a></li>
+						<li><a href="#" onclick="window.open('http://www.bccancer.bc.ca/HPI/DrugDatabase/DrugIndexPro/default.htm', '_system');">BC Cancer Agency Website</a></li>
+						<li><a href="#" onclick="window.open('https://www.cancercare.on.ca/cms/One.aspx', '_system');">Cancer Care Ontario Website</a></li>	
+						<li><a href="#" onclick="window.open('http://www.acrin.org/Portals/0/Administration/Regulatory/CTCAE_4.02_2009-09-15_QuickReference_5x7.pdf', '_system');">NCI Common Toxicity Criteria (Version 4, 2009)</a></li>
+						<li><a href="#" onclick="window.open('http://www.sads.org.uk/drugs_to_avoid.htm', '_system');">QTc Interval Prolonging Agents</a></li>
+						<li><a href="#" onclick="window.open('http://www.mhc.com//Cytochromes//PGP//PgpTable.HTML', '_system');">P-glycoprotein Drug Interactions</a></li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h3>Version</h3>
+					<p>Version 1.0</p>
+					<div id="lastUpdateDiv"></div>
+				</div>
+			</div>
+				
+		<!-- Footer -->
+			<!-- JQuery navbar to navigate between therapeutics/doses/protocols/etc -->
+			<div data-role="footer" data-id="persistent-navbar" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" id='nav-1' data-prefetch="true" onClick="window.location.assign('drugmenu.html');" data-icon="pill">Drugs</a></li>
+						<li><a href="#" id='nav-2' data-prefetch="true" onClick="window.location.assign('doses.html');" data-icon="mg">Doses</a></li>
+						<li><a href="#" id='nav-3' data-prefetch="true" onClick="window.location.assign('interactions.html');" data-icon="interaction">Interactions</a></li>
+						<!-- <li><a href="protocols.html" data-prefetch="true" onClick=loadProtocolPage(this.href) data-icon="notebook"  class="ui-btn-active ui-state-persist">Protocols</a></li> -->
+						<li><a href="#" id='nav-4' data-prefetch="true" data-icon="info"  class="ui-btn-active ui-state-persist">About</a></li>
+					</ul>
+				</div>
+			</div>
+	
+		<!-- XML Parser for the Glossary-->
+		<script>
+			// Create XMLHttpRequest object based on platform
+			if (window.XMLHttpRequest) { 
+				xmlhttp=new XMLHttpRequest();
+			} else {
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+	
+			// Send GET request to glossary.xml file
+			xmlhttp.open("GET","glossary.xml", false);
+			xmlhttp.send()
+			xmlDoc = xmlhttp.responseXML;
+			var entries = xmlDoc.getElementsByTagName("entry");
+			var glossary_text = "";
+	
+			// Populate HTML of glossary div
+			for (i = 0; i < entries.length; i++) {
+				glossary_text += "<p><b>";
+				glossary_text += entries[i].getElementsByTagName("key")[0].childNodes[0].nodeValue;
+				glossary_text += "</b> : ";
+				glossary_text += entries[i].getElementsByTagName("def")[0].childNodes[0].nodeValue;
+				glossary_text += "</p>";
+			}
+			document.getElementById("glossary_div").innerHTML = glossary_text;
+			
+			// Set the timestamp for the last time the medical information was updated
+			lastUpdateString = "Medical information up to date as of " + 
+								getLastUpdateTime() + " server time.";
+			document.getElementById("lastUpdateDiv").innerHTML = lastUpdateString;
+		</script>
+	</div>
+	</body>
+</html>

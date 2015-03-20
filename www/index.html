@@ -1,0 +1,44 @@
+<!--  Disclaimer page for AntiC App -->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<Title>AntiC Disclaimer Page</Title>
+	<!-- First page of the application, including the disclaimer and a choice to accept the disclaimer -->
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	
+	<!-- Using Nicescroll plugin for scrollbar http://areaaperta.com/nicescroll/ -->
+	<script src="jquery/jquery.nicescroll.js"></script>
+</head>
+<body>
+	<!-- Content for disclaimer page -->
+	<div id="pagewrap">
+		</br></br><img id="disclaimer_img" src="Icons/logo.png"></img></br>
+		<h4 id="disclaimer"><b>Disclaimer:</b></h4>
+		<h4 id="disclaimer2"><i>Please scroll down to accept</i></h4>
+		<p id="disclaimer">The contents of the AntiC App are intended to assist non-oncology pharmacists and allied health-care professionals to identify problems associated with oral chemotherapy. While there is public access, it must be understood that the information is not intended as medical advice, which should be provided by a clinician, with the health information, necessary to identify the individual's requirements. The information provided on the AntiC App is intended primarly for use in Canada, and may not apply to other jurisdictions. The authors disclaim any liability, loss, injury or damage incurred as a consequence, directly or indirectly, by the use and or application of any of the contents of the AntiC App.</p>
+		<button id="accept" class="ui-btn">Accept</button>
+	</div>
+</body>
+</html>
+<script>
+// When the accept button is clicked
+$("#accept").click(function() {
+	window.location.assign("drugmenu.html");
+});
+
+// Add the jQuery nice scrollbar
+$(document).ready(
+  function() { 
+    $("html").niceScroll();
+    $("html").getNiceScroll().resize();
+  }
+);
+</script>

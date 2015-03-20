@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<Title>Interactions for Specific Drug</Title>
+	<!-- Contains the drug-drug interactions for the selected cyp enzyme -->
+		
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+		
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/cyppage.js"></script>
+	<script type="text/javascript" src="Classes/drug.js"></script>
+	<script type="text/javascript" src="Classes/cypenzyme.js"></script>
+	<script type="text/javascript" src="Classes/interaction.js"></script>
+	<script type="text/javascript" src="Classes/oncologyuse.js"></script>
+	<script type="text/javascript" src="Classes/protocol.js"></script>
+	<script type="text/javascript" src="Classes/sideeffect.js"></script>
+	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testdrug.js"></script>
+	<script type="text/javascript" src="Tests/testmenu.js"></script>
+	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
+	<script type="text/javascript" src="Tests/testcypenzyme.js"></script>
+	<script type="text/javascript" src="Tests/testoncologyuse.js"></script>
+	<script type="text/javascript" src="Tests/testprotocol.js"></script>
+	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testserver.js"></script>
+</head>
+<body>
+	<div data-role='page' id='page2'data-url=dummyUrl>
+		<div data-role='header'>
+			<h1 id='title'></h1>
+			<a id="backbutton" class="ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" onClick=decideBack() data-icon='back'></a>
+		</div>
+		<div id="margin"></div>	
+		<!-- Body Content -->
+		<div data-role='bodyContent'>
+			<div data-role="navbar" id='intType'>
+				<ul>
+					<li><a id="radio-choice-sub2" data-prefetch="true" onClick=populateMenuList(subArray)>Substrate</a></li>
+					<li><a id="radio-choice-inh2" data-prefetch="true" onClick=populateMenuList(inhArray)>Inhibitor</a></li>
+					<li><a id="radio-choice-ind2" data-prefetch="true" onClick=populateMenuList(indArray)>Inducer</a></li>
+				</ul>	
+			</div>
+		</div>
+		<ul id="menuList" data-role="listview" data-filter="false" data-inset="true">
+		</ul>
+		<div data-role='footer'>
+			<h4>&copy; 2014 AntiC</h4>
+		</div>
+	</div>
+</body>
+<script>
+$(document).ready(function() {	
+	// Load cyp enzyme selected from interactions
+	if (localStorage.currentEnzyme != null) {
+		currEnzyme = localStorage.currentEnzyme;
+		
+		// Create an interaction array
+		var intArray = createIntArray(currEnzyme);
+		
+		// Making sure menuList is empty
+		$('#menuList').empty();
+		
+		// Sets title to cyp enzyme name
+		$('#title').text(currEnzyme + " - Interactions");
+		
+		// Creates cyp enzyme arrays (substrate,inhibitors, and inducer)
+		cypArrays = createCypEnzymeArrays(intArray);
+		
+		subArray = cypArrays[0];
+		inhArray = cypArrays[1];
+		indArray = cypArrays[2];
+		
+		var state = localStorage.intTab
+		// Populates menuList with an array
+		// Substrate by default, but some hyperlinks specifically open as inhibitor or inducer
+		if (state == 'substrate') {
+			populateMenuList(subArray);		
+			$('#radio-choice-sub2').addClass("ui-btn-active");
+		} else if (state == 'inhibitor') {
+			populateMenuList(inhArray);	
+			$('#radio-choice-inh2').addClass("ui-btn-active");
+		} else if (state == 'inducer') {
+			populateMenuList(indArray);	
+			$('#radio-choice-ind2').addClass("ui-btn-active");
+		}
+	}
+});
+
+// Change list names when substrate name is checked
+$(document).on('change', '#radio-choice-sub2', function() {
+	populateMenuList(subArray);
+});	
+	
+// Change list names when inhibitor name is checked
+$(document).on('change', '#radio-choice-inh2', function() {
+	populateMenuList(inhArray);
+});	
+	
+// Change list names when inducer name is checked
+$(document).on('change', '#radio-choice-ind2', function() {
+	populateMenuList(indArray);
+});	
+
+$.mobile.loading( 'show', {
+	text: 'foo',
+	textVisible: true,
+	theme: 'z',
+	html: ""
+});
+</script>
+</html>

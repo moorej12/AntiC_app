@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html>
+<!-- ** NOTE ** : Page is obsolete based on client requests by Tibor.  
+				  Code is left behind in case the Protocols tab is to be implemented in the future,
+				  but this is *not* part of the final project as of April 2014
+-->
+<head>
+	<Title>Individual Drug Page</Title>
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+	
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" src="Classes/drug.js"></script>
+	<script type="text/javascript" src="Tests/testmodule.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="Tests/testdrug.js"></script>
+	<script type="text/javascript" src="Tests/testmenu.js"></script>
+	<script type="text/javascript" src="Classes/cypenzyme.js"></script>
+	<script type="text/javascript" src="Classes/oncologyuse.js"></script>
+	<script type="text/javascript" src="Classes/protocol.js"></script>
+	<script type="text/javascript" src="Classes/sideeffect.js"></script>
+	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
+	<script type="text/javascript" src="Tests/testcypenzyme.js"></script>
+	<script type="text/javascript" src="Tests/testoncologyuse.js"></script>
+	<script type="text/javascript" src="Tests/testprotocol.js"></script>
+	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testserver.js"></script>			
+</head>
+<body>
+	<div data-role='page' id='page2'data-url=dummyUrl>
+		<div data-role='header'>
+			 <h1 id = title> </h1>
+			 <a id="backbutton" href='protocols.html' onClick=window.location.assign(this.href) data-icon='back'></a>
+		</div>
+	    <div data-role='bodyContent' id='body'>
+			<pre id='main'></pre>	
+		</div>
+		<div data-role='footer'>
+			<h4>&copy; 2014 AntiC</h4>
+		</div>
+	</div>
+</body>
+<script>
+	$('#title').text(name);
+	
+	function loadFunction(name, parameter){
+			//Puts server data stored locally into variable
+			var data = JSON.parse(localStorage.getItem("data"));
+			
+			//Accessing from JSON data
+			var temp = data[parameter];
+			
+			//Creates temporary array
+			var tempArray = new Array();
+			
+			
+			
+			//Populates tempArray with all drugs from JSON data
+			for(var i=0;i < objLength(temp);i++){
+				var state = true;
+				for(var j = 0; j < tempArray.length;j++){
+					
+					if(temp[i].drug == tempArray[j]){
+						state = false;
+					}		
+				}
+				if(state == true){
+					
+					tempArray.push(temp[i]);
+				}
+			}
+			
+			
+			return tempArray;		
+		}
+		
+		
+		function filterDuplicateProtocol(drugArray) {
+		
+			//Creates temporary array
+			var listOfProt = new Array();
+			
+			for(var i = 0; i < drugArray.length; i++){
+				var state = true;
+				for(var j = 0;j < listOfProt.length;j++) {
+					
+					
+					if(listOfProt[j] == drugArray[i].protocol){
+						state = false;
+					}
+				}
+				
+				if(state == true){
+					
+					listOfProt.push(drugArray[i].protocol);
+				}
+				
+			}
+			return listOfProt;
+		}
+		
+		function filterUse(drugArray, name) {
+		
+			//Creates temporary array
+			var listOfProt = new Array();
+			
+			for(var i = 0; i < drugArray.length; i++){
+				var state = true;
+				for(var j = 0;j < listOfProt.length;j++) {
+					
+					if(name == drugArray[i].protocol){
+						
+						if(listOfProt[j].use_case == drugArray[i].use_case){
+							state = false;
+						}
+					} else {
+						state = false
+					}
+				}
+				
+				if(state == true){
+					
+					listOfProt.push(drugArray[i]);
+				}
+				
+			}
+			return listOfProt;
+		}
+		
+		function filterVariation(drugArray, name, use) {
+		
+			//Creates temporary array
+			var listOfProt = new Array();
+			for(var i = 0; i < drugArray.length; i++){
+				var state = true;
+				for(var j = 0;j < listOfProt.length;j++) {
+					if(name == drugArray[i].protocol){
+						
+						if(use == drugArray[i].use_case){
+							
+							if(listOfProt[j].variation == drugArray[i].variation){
+								state = false;
+							}
+						} else {
+							state = false;
+						}
+					} else {
+						state = false;
+					}
+				}
+				
+				if(state == true){
+					
+					listOfProt.push(drugArray[i]);
+				}
+				
+			}
+			
+			return listOfProt;
+		}
+		
+		function filterInfo(drugArray, name, use, variant) {
+			
+			//Creates temporary array
+			var listOfProt = new Array();
+			for(var i = 0; i < drugArray.length; i++){
+				var state = true;
+				
+				
+				if(name == drugArray[i].protocol){
+					
+					if(use == drugArray[i].use_case){
+						
+						if(variant == drugArray[i].variation){
+							
+							return drugArray[i];
+						}
+					} 
+				}
+			}
+		}
+		
+		function protoLookup(drugArray, name, use, variant) {
+			
+			//Creates temporary array
+			var listOfProt = new Array();
+			for(var i = 0; i < drugArray.length; i++){
+				var state = true;
+				
+				
+				if(name == drugArray[i].name){
+					
+					if(use == drugArray[i].use_case){
+						
+						if(variant == drugArray[i].variation){
+							
+							return drugArray[i];
+						}
+					} 
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		function buildScreen(){
+			//Grab the list of drugs
+			var htmlGen = "<html>";
+			var name = localStorage.getItem("currentProtocol");
+			var drugArray = loadFunction(name, "protocol_drugs");
+			var protArray = loadFunction(name, "protocols");
+			var drugFiltered = filterDuplicateProtocol(drugArray);
+			for(var protocolLevel = 0; protocolLevel < drugFiltered.length; protocolLevel++){
+			    
+				htmlGen = htmlGen + '<div data-role="collapsible" data-mini="true" data-theme="b" data-content-theme="a">';
+				htmlGen = htmlGen + '<h2>' + drugFiltered[protocolLevel] + '</h2>';
+				var useFiltered = filterUse(drugArray, drugFiltered[protocolLevel]);
+				
+				for(var useLevel = 0; useLevel < useFiltered.length; useLevel++){
+					
+					htmlGen = htmlGen + '<div data-role="collapsible" data-mini="true" data-theme="b" data-content-theme="a">';
+					htmlGen = htmlGen + '<h3>' + useFiltered[useLevel].use_case + '</h3>';
+					
+					var varFiltered = filterVariation(drugArray, drugFiltered[protocolLevel], useFiltered[useLevel].use_case);
+					for(var varLevel = 0; varLevel < varFiltered.length; varLevel++){
+						htmlGen = htmlGen + '<div data-role="collapsible" data-mini="true" data-theme="b" data-content-theme="a">';
+						htmlGen = htmlGen + '<h4>Variation ' + varFiltered[varLevel].variation + '</h4>';
+						
+						var drugInfo = filterInfo(drugArray, drugFiltered[protocolLevel], useFiltered[useLevel].use_case, varFiltered[varLevel].variation);
+						var protInfo = protoLookup(protArray, drugFiltered[protocolLevel], useFiltered[useLevel].use_case, varFiltered[varLevel].variation);
+						htmlGen = htmlGen + '<p></p><p></p>'
+						htmlGen = htmlGen + '<h2>Using ' +drugFiltered[protocolLevel] + ' when treating ' + useFiltered[useLevel].use_case + ' Conditions with Variation ' + varFiltered[varLevel].variation + '</h2>';
+						htmlGen = htmlGen + '<p>Dose: '+ drugInfo.dose + '</p>';		
+						htmlGen = htmlGen + '<p>Days of Cycle: '+ drugInfo.days_of_cyc + '</p>';
+						htmlGen = htmlGen + '<p>Days per Cycle: '+ protInfo.days_per_cyc + '</p>';
+						htmlGen = htmlGen + '<p>Number of Cycles: '+ protInfo.num_cyc + '</p>';				
+						htmlGen = htmlGen + '</div>';
+					}
+					htmlGen = htmlGen + '</div>';
+				}
+				htmlGen = htmlGen + '</div>';		
+			}	
+			htmlGen = htmlGen + "</html>";
+			console.log(htmlGen);
+			return htmlGen;
+		}
+		
+		var output = buildScreen();
+		$('#body').html(output);
+	
+
+</script>
+</html>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.oralchemotherapy.antic" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>AntiC</name>
+    <description>
+        A application for viewing up-to-date information about oral chemotherapy drugs.
+    </description>
+    <author email="jbmoore@ualberta.ca" href="http://oralchemotherapy.ca">
+        AntiC Team
+    </author>
+    <content src="index.html" />
+    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+    <access origin="*" />
+    <icon src="www/Icons/androidicon_xxhdpi.png"></icon>
+    <icon src="www/Icons/androidicon_mdpi.png" platform="android" density="mdpi"></icon>
+    <icon src="www/Icons/androidicon_hdpi.png" platform="android" density="hdpi"></icon>
+    <icon src="www/Icons/androidicon_xhdpi.png" platform="android" density="xhdpi"></icon>
+    <icon src="www/Icons/androidicon_xxhdpi.png" platform="android" density="xxhdpi"></icon>
+</widget>

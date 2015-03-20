@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<Title>Individual Drug Page</Title>
+	<!-- Contains information pertaining to the selected chemotherapeutic drug -->
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.0.css" />
+	<link rel="stylesheet" type="text/css" href="customstyles.css"/>
+
+	<!-- Jquery/Script Files -->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/drug.js"></script>
+	<script type="text/javascript" src="js/interaction.js"></script>
+	<script type="text/javascript" src="Classes/cypenzyme.js"></script>
+	<script type="text/javascript" src="Classes/drug.js"></script>
+	<script type="text/javascript" src="Classes/oncologyuse.js"></script>
+	<script type="text/javascript" src="Classes/protocol.js"></script>
+	<script type="text/javascript" src="Classes/sideeffect.js"></script>
+	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
+	<script type="text/javascript" src="Tests/testdrug.js"></script>
+	<script type="text/javascript" src="Tests/testmenu.js"></script>
+	<script type="text/javascript" src="Tests/testmodule.js"></script>
+	<script type="text/javascript" src="Tests/testcypenzyme.js"></script>
+	<script type="text/javascript" src="Tests/testoncologyuse.js"></script>
+	<script type="text/javascript" src="Tests/testprotocol.js"></script>
+	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
+	<script type="text/javascript" src="Tests/testserver.js"></script>
+</head>
+<body>
+	<div data-role='page' id='page2'data-url=dummyUrl>
+		<div data-role='header'>
+			 <h1 id = title> </h1>
+			 <a id="backbutton" class="ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" data-icon='back'></a>
+			 <a id="collapse" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all" data-icon="plus"></a>
+		</div>
+	    <div id="pageContent" data-role='bodyContent'>
+			<div class="" id="riskdiv" data-role="header" data-theme="b">
+				<h4 class="" data-shadow="true" id="riskheader"></h4>
+			</div>
+			<div id='c1' data-role="collapsible"   data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Classification:</h4>
+		    	  <p id='class'></p>
+			</div>
+			<div id='c2' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Oncology Uses:</h4>
+		    	  <p id='onuse'></p>
+			</div>
+			<div id='c3' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Contraindications:</h4>
+		    	  <p id='contrain'></p>
+			</div>
+			<div id='c4' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Precautions (Special Populations):</h4>
+		    	  <p id='spec'> </p>
+			</div>
+			<div id='c5' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Pregnancy:</h4>
+		    	  <p id='preg'></p>
+			</div>
+			<div id='c6' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Breastfeeding:</h4>
+		    	  <p id='breast'></p>
+			</div>
+			<div id='c7' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Fertility:</h4>
+		    	  <p id='fert'></p>
+			</div>
+			<div id='c8' data-role="collapsible"   data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4 id='freq'>Side Effects</h4>
+		    	  <p id='side'></p>
+			</div>
+			<div id='c9' data-role="collapsible"   data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Drug Interactions:</h4>
+		    	  <p id='interact'> </p>
+			</div>
+			<div id='c10' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Metabolism:</h4>
+		    	  <p id='meta'></p>
+			</div>
+			<div id='c11' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Usual Oral Dose(s)</h4>
+		    	  <p id='oral'> </p>
+			</div>
+			<div id='c12' data-role="collapsible"   data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Dose Adjustment:</h4>
+		    	  <p id='dose'></p>
+			</div>
+			<div id='c13' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Excretion:</h4>
+		    	  <p id='exr'></p>
+			</div>
+			<div id='c14' data-role="collapsible"  data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Availability:</h4>
+		    	  <p id='avail'></p>
+			</div>
+			<div id='c15' data-role="collapsible" data-mini="true" data-theme="b" data-content-theme="a">
+		  	  <h4>Administration:</h4>
+		    	  <p id='admin'> </p>
+			</div>
+			<div id='c16' data-role="collapsible" data-mini="true" data-theme="b" data-content-theme="a">
+		    	  <h4>Monitoring:</h4>
+		    	  <p id='moni'></p>
+			</div>
+			<div data-role="header" data-theme="a">
+				<h4 data-shadow="true" id="lastrev"></h4>
+			</div>
+		</div>
+		<div data-role='footer'>
+			<h4>&copy; 2014 AntiC</h4>
+		</div>
+<script>
+console.log("starting script");
+// Populates drug object with information from JSON data
+var temp = JSON.parse(localStorage.getItem("currentDrug"));
+if(temp == null) {
+    console.log("currentDrug is null");
+}
+// Creates key array from drug
+var keys = Object.keys(temp);
+var name = temp[keys[2]];
+var data = JSON.parse(localStorage.getItem("data"));
+if (data == null) {
+    console.log("data is null");
+}
+function filterByName(e) {
+	// Filter function for gathering the relevant drug information
+	return e.drug == name;
+}
+// Loads drug information from table based on drug name
+var onc_use = data["onc_uses"].filter(filterByName);
+var precaution = data["precautions"].filter(filterByName);
+var dose = data["dose_adjusts"].filter(filterByName);
+var side = data["side_effects"].filter(filterByName);
+var interaction = data["drug_interacts"].filter(filterByName);
+var cyp = data["drug_cyp_interacts"].filter(filterByName);
+
+// Populate as much of the drug fields as possible
+var drug = new Drug(temp[keys[0]], temp[keys[1]], temp[keys[2]], temp[keys[3]],temp[keys[4]],
+					temp[keys[5]], temp[keys[6]], temp[keys[7]], temp[keys[8]],temp[keys[9]],
+					temp[keys[10]], temp[keys[11]], temp[keys[12]], temp[keys[13]], temp[keys[14]],
+	                '', '', '', '', '', temp[keys[20]], temp[keys[21]], temp[keys[22]], temp[keys[23]]);
+
+// Create the array of cyp enzymes
+var intArray = createCypArray();
+
+// Populate the html fields with the drug information
+$('#title').html(drug.getGenName() + " (" + drug.getTradeName() + ")");
+$("#riskdiv").attr("class",getRiskColor());
+$("#riskheader").attr("class",getRiskColor());
+$('#riskheader').html('Risk: ' + drug.getRisk());
+$('#class').html(drug.getClassification().replace(/[|]/g,"</br>"));
+$('#onuse').html(createOncologyUseData().replace(/[|]/g,"</br>"));
+$('#contrain').html(drug.getContrain().replace(/[|]/g,"</br>"));
+$('#spec').html(createSpecPopData().replace(/[|]/g,"</br>"));
+$('#preg').html(drug.getPreg().replace(/[|]/g,"</br>"));
+$('#breast').html( drug.getBreastFeed().replace(/[|]/g,"</br>"));
+$('#fert').html(drug.getFertility().replace(/[|]/g,"</br>"));
+$('#side').html(createSideEffectData().replace(/[|]/g,"</br>"));
+$('#interact').html(createInteractionData(interaction, cyp, drug));
+$('#meta').html(drug.getMetabolism().replace(/[|]/g,"</br>"));
+$('#oral').html(drug.getUsualOralDose().replace(/[|]/g,"</br>"));
+$('#dose').html(createDoseAdjustment().replace(/[|]/g,"</br>"));
+$('#exr').html(drug.getExcretion().replace(/[|]/g,"</br>"));
+$('#avail').html(drug.getAvailable().replace(/[|]/g,"</br>"));
+$('#admin').html(drug.getAdmin().replace(/[|]/g,"</br>"));
+$('#moni').html(createMonitoring());
+$('#lastrev').html('Last Revision: '+drug.getLastRevision());
+
+
+$(document).ready(function(){
+	setState();
+});
+
+// Collapses or Expanded all of the dropdown menus and changes icon
+$("#collapse").on("click", function() {
+	if ($(this).attr("data-icon") == "plus") {
+		$('div[data-role="collapsible"]').collapsible("expand");
+		$(this).attr("data-icon","minus").buttonMarkup("refresh");
+		$(this).buttonMarkup({ icon: "minus" });
+	} else {
+		$('div[data-role="collapsible"]').collapsible("collapse");
+		$(this).attr("data-icon","plus").buttonMarkup("refresh");
+		$(this).buttonMarkup({ icon: "plus" });
+	} 
+});
+
+// On click of back button go to main page(drugmenu.html)
+$('#backbutton').click(function() {
+	window.location.assign("drugmenu.html");
+});
+</script>
+    </div>
+</body>
+</html>
