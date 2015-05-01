@@ -83,13 +83,13 @@ $(document).ready(function() {
 		// Populates menuList with an array
 		// Substrate by default, but some hyperlinks specifically open as inhibitor or inducer
 		if (state == 'substrate') {
-			populateMenuList(subArray);		
+			populateMenuList(subArray, currEnzyme);		
 			$('#radio-choice-sub2').addClass("ui-btn-active");
 		} else if (state == 'inhibitor') {
-			populateMenuList(inhArray);	
+			populateMenuList(inhArray, currEnzyme);	
 			$('#radio-choice-inh2').addClass("ui-btn-active");
 		} else if (state == 'inducer') {
-			populateMenuList(indArray);	
+			populateMenuList(indArray, currEnzyme);	
 			$('#radio-choice-ind2').addClass("ui-btn-active");
 		}
 	}
@@ -97,17 +97,17 @@ $(document).ready(function() {
 
 // Change list names when substrate name is checked
 $(document).on('change', '#radio-choice-sub2', function() {
-	populateMenuList(subArray);
+	populateMenuList(subArray, currEnzyme);
 });	
 	
 // Change list names when inhibitor name is checked
 $(document).on('change', '#radio-choice-inh2', function() {
-	populateMenuList(inhArray);
+	populateMenuList(inhArray, currEnzyme);
 });	
 	
 // Change list names when inducer name is checked
 $(document).on('change', '#radio-choice-ind2', function() {
-	populateMenuList(indArray);
+	populateMenuList(indArray, currEnzyme);
 });	
 
 $.mobile.loading( 'show', {

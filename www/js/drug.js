@@ -123,9 +123,9 @@ function createOncologyUseData() {
 	var temp = "";
 	for(var i = 0; i < onc_use.length;i++){
 		if(onc_use[i].approved == 1){
-			temp = temp + "<b>Approved:</b> " + onc_use[i].cancer_type + "</br>";
+			temp = temp + "<b>Health Canada approved:</b> " + onc_use[i].cancer_type + "</br>";
 		} else {
-			temp = temp + "<i>Not Approved:</i> " + onc_use[i].cancer_type + "</br>";
+			temp = temp + "<i>Not Health Canada approved:</i> " + onc_use[i].cancer_type + "</br>";
 		}
 	}
 	return temp;
