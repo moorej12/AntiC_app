@@ -51,9 +51,10 @@ function downloadImageFromServer(imageName) {
        // Initialize the file paths
        var remoteImagePath = remoteServerImagesDir + imageName;
        var uri = encodeURI(remoteImagePath);
-       console.log(imageName);
-       var localImagePath = fileSystem.root.toURL() + dataDirectoryPath + imageName.split("/").pop();
-       
+       console.log("imageName" + imageName);
+       var localImagePath = fileSystem.root.toURL() + dataDirectoryPath + imageName.split("/").pop().replace(" ", "_");
+       console.log(localImagePath);
+    
        // Initialize the download process
        fileTransfer.download(uri, localImagePath,
                              function(entry) { 
