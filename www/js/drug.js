@@ -208,7 +208,7 @@ function createInteractionData(interaction, cyp, drug) {
 		re2 = new RegExp("" + intArray[i].name + " - Inhibitors", "g");
 		interactionOut = interactionOut.replace(re2,"<a href='cyppage.html' onClick=cypHyperLink(" + i + ",'inhibitor')>" + intArray[i].getName() + " - Inhibitors</a>");
 		re3 = new RegExp("" + intArray[i].name + " - Substrates", "g");
-		interactionOut = interactionOut.replace(re3,"<a href='cyppage.html' onClick=cypHyperLink("+ i + ", 'substrate')>" + intArray[i].getName() + " - Substrates</a>");
+		interactionOut = interactionOut.replace(re3,"<a href='cyppage.html' onClick=cypHyperLink(" + i + ",'substrate')>" + intArray[i].getName() + " - Substrates</a>");
 	}
 	var re = new RegExp("PGP","g");
 	interactionOut = interactionOut.replace(re,"<a href='cyppage.html' onClick=pgpHyperLink(this.href)>PGP</a>");
