@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="Classes/protocol.js"></script>
 	<script type="text/javascript" src="Classes/sideeffect.js"></script>
 	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
+<!--
 	<script type="text/javascript" src="Tests/testdrug.js"></script>
 	<script type="text/javascript" src="Tests/testmenu.js"></script>
 	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
@@ -29,6 +30,7 @@
 	<script type="text/javascript" src="Tests/testprotocol.js"></script>
 	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
 	<script type="text/javascript" src="Tests/testserver.js"></script>
+-->
 </head>
 <body>
 	<div data-role='page' id='page2'data-url=dummyUrl>
@@ -56,6 +58,7 @@
 </body>
 <script>
 $(document).ready(function() {	
+    console.log("Cyp Page");
 	// Load cyp enzyme selected from interactions
 	if (localStorage.currentEnzyme != null) {
 		currEnzyme = localStorage.currentEnzyme;
