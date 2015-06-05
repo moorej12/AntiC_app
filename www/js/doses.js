@@ -56,9 +56,14 @@ function populateDoseList(doseAdjustArray) {
 
 	$.each(doseAdjustArray, function(index, value) {
 		var filePath = "";
-		
+		var fileEnding = "";
 		// Get the name of the dose adjust with capitalization 
-		var displayVal = toTitleCase(value.split("/").pop().split(".jpg")[0].replace("_", " - "));
+        if (value.search(".jpg") > 0) {
+            fileEnding = ".jpg";
+        } else {
+            fileEnding = ".jpeg";
+        }
+		var displayVal = toTitleCase(value.split("/").pop().split(fileEnding)[0].replace("_", " - "));
 		
 		// Populating MenuList(Listview) 
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {

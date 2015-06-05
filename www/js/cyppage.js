@@ -80,10 +80,10 @@ function createCypEnzymeArrays(intArray) {
  * @method populateMenuList
  * @param {Object} List of cyp enzyme objects to display
  */
- function populateMenuList(cypArray, currEnzyme) {
+ function populateMenuList(cypArray) {
  	// Making sure listview is empty
  	$('#menuList').empty();
-    currentEnzyme = currEnzyme;
+    currentEnzyme = $("#title").text().split(" ")[0];
     console.log(currentEnzyme);
 
 	// Sorting cyp array by the substance name
@@ -95,11 +95,11 @@ function createCypEnzymeArrays(intArray) {
 		$.each(cypArray, function( index, value ) {
             var menuListString = '<li data-icon="false" class="listitems2" id="' + index + '">' 
 					              + '<div>' 
-            if (currentEnzyme != "QT Prolonging Agents" || currentEnzyme != "P-glycoprotein") {
+            if (currentEnzyme != "QT Prolonging Agents" && currentEnzyme != "P-glycoprotein") {
                 menuListString = menuListString + addInteractionImage(cypArray[index].getSeverity().toLowerCase())
             }
             menuListString = menuListString + '<span style="padding-left:50px"><b>' + cypArray[index].getSubName() 
-            if (currentEnzyme != "QT Prolonging Agents" || currentEnzyme != "P-glycoprotein") {
+            if (currentEnzyme != "QT Prolonging Agents" && currentEnzyme != "P-glycoprotein") {
                 menuListString = menuListString + " (" + cypArray[index].getSeverity() + ")"
             }
             menuListString = menuListString + '</b></span></div></li>';

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .ui-icon-low:after{
 	background-image: url("Icons/lowicon.png") !important;
 	background-size: 24px 24px !important;
@@ -239,7 +238,12 @@ div fieldset{
 	
 }
 
-=======
+#doseChartPage {
+	height:100%;
+}
+#wrapper {
+	height:100%;
+}
 .ui-icon-low:after{
 	background-image: url("Icons/lowicon.png") !important;
 	background-size: 24px 24px !important;

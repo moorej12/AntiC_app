@@ -21,7 +21,6 @@
 	<script type="text/javascript" src="Classes/protocol.js"></script>
 	<script type="text/javascript" src="Classes/sideeffect.js"></script>
 	<script type="text/javascript" src="Classes/specialpopulation.js"></script>
-<!--
 	<script type="text/javascript" src="Tests/testdrug.js"></script>
 	<script type="text/javascript" src="Tests/testmenu.js"></script>
 	<script type="text/javascript" src="Tests/testsideeffect.js"></script>
@@ -30,7 +29,6 @@
 	<script type="text/javascript" src="Tests/testprotocol.js"></script>
 	<script type="text/javascript" src="Tests/testspecialpopulation.js"></script>
 	<script type="text/javascript" src="Tests/testserver.js"></script>
--->
 </head>
 <body>
 	<div data-role='page' id='page2'data-url=dummyUrl>
@@ -83,13 +81,13 @@ $(document).ready(function() {
 		// Populates menuList with an array
 		// Substrate by default, but some hyperlinks specifically open as inhibitor or inducer
 		if (state == 'substrate') {
-			populateMenuList(subArray, currEnzyme);		
+			populateMenuList(subArray);		
 			$('#radio-choice-sub2').addClass("ui-btn-active");
 		} else if (state == 'inhibitor') {
-			populateMenuList(inhArray, currEnzyme);	
+			populateMenuList(inhArray);	
 			$('#radio-choice-inh2').addClass("ui-btn-active");
 		} else if (state == 'inducer') {
-			populateMenuList(indArray, currEnzyme);	
+			populateMenuList(indArray);	
 			$('#radio-choice-ind2').addClass("ui-btn-active");
 		}
 	}
@@ -97,17 +95,17 @@ $(document).ready(function() {
 
 // Change list names when substrate name is checked
 $(document).on('change', '#radio-choice-sub2', function() {
-	populateMenuList(subArray, currEnzyme);
+	populateMenuList(subArray);
 });	
 	
 // Change list names when inhibitor name is checked
 $(document).on('change', '#radio-choice-inh2', function() {
-	populateMenuList(inhArray, currEnzyme);
+	populateMenuList(inhArray);
 });	
 	
 // Change list names when inducer name is checked
 $(document).on('change', '#radio-choice-ind2', function() {
-	populateMenuList(indArray, currEnzyme);
+	populateMenuList(indArray);
 });	
 
 $.mobile.loading( 'show', {
