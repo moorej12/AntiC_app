@@ -210,7 +210,22 @@ function getMetabolism() {
  * @return {String} Drug's usual oral dose info
  */
 function getUsualOralDose() {
-	return this.usualoraldose;
+	var dose = this.usualoraldose;
+	var data = JSON.parse(localStorage.getItem("data"));
+	var protocols = data["protocols"];
+	var drugName = this.getGenName();
+	var subArray = protocols.filter(function (entry) { return entry.drug === drugName;});
+	if(subArray.length != 0) {
+		var protocol = subArray[0];
+		var imagePath = protocol.image;
+		var imageName = imagePath.split("/").pop();
+        var arrayimagepath = imageName.split(".");
+        imageName = arrayimagepath.join("protocol.");
+        imageName = localStorage.fileSystemRoot + "/anticData/" + imageName;
+		dose = dose + '</br><a href="javascript:void(0)"" onclick=loadProtocolPage(this.name) ' +
+			'name="' + imageName + '">Refer to Protocol</a>';
+	}
+	return dose;
 }
 
 /**

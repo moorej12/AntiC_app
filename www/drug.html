@@ -153,7 +153,7 @@ $('#title').html(drug.getGenName() + " (" + drug.getTradeName() + ")");
 $("#riskdiv").attr("class",getRiskColor());
 $("#riskheader").attr("class",getRiskColor());
 $('#riskheader').html('Risk: ' + drug.getRisk());
-$('#class').html(drug.getClassification().replace(/[|]/g,"</br>"));
+$('#class').html(createClassification());
 $('#onuse').html(createOncologyUseData().replace(/[|]/g,"</br>"));
 $('#contrain').html(drug.getContrain().replace(/[|]/g,"</br>"));
 $('#spec').html(createSpecPopData().replace(/[|]/g,"</br>"));

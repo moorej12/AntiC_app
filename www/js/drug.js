@@ -113,6 +113,14 @@ function createMonitoring() {
 	return temp;
 }
 
+function createClassification() {
+	var re = new RegExp("NIOSH","i");
+	var temp = drug.getClassification().replace(/[|]/g,"</br>");
+	temp = temp.replace(re, "<a href='#' onclick=\"window.open('" +
+		"http://www.cdc.gov/niosh/docs/2014-138/pdfs/2014-138.pdf', '_system');\">NIOSH</a>");
+	return temp;
+}
+
 /** 
  * Creates the text markup for the oncology use header
  * 
@@ -273,6 +281,14 @@ function getRiskColor() {
        } else if (drug.getRisk().toLowerCase() == "high") {
                return "red";
        }
+}
+
+function loadProtocolPage(fileName) {
+	// Stores current dose chart in local storage for viewing later
+	localStorage.setItem("currentDoseChart", fileName);
+
+	// Relocate window to dosechart.html
+	window.location.assign("dosechart.html");
 }
 
 console.log("drug.js is working!");

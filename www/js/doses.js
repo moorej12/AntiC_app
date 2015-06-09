@@ -22,6 +22,7 @@ function createDoseAdjustmentArray() {
 	}
 	// Gather the dose adjustments
 	var doseData = data["dose_adjusts"];
+	var protocolData = data["protocols"];
 
 	// Creates dose array
 	var doseArray = new Array();
@@ -37,6 +38,17 @@ function createDoseAdjustmentArray() {
 	        }
 	    }
 	}
+	for (i=0; i < protocolData.length; i++) {
+		var chartVal = protocolData[i].image;
+		var chartValArray = chartVal.split(".");
+		chartVal = chartValArray.join("protocol.");
+		if (chartVal != null) {
+			if ($.inArray(chartVal, doseArray) == -1) {
+				doseArray.push(chartVal);
+			}
+		}
+	}
+
 	return doseArray;
 }
 

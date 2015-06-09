@@ -53,6 +53,11 @@ function downloadImageFromServer(imageName) {
        var uri = encodeURI(remoteImagePath);
        console.log("imageName" + imageName);
        var localImagePath = fileSystem.root.toURL() + dataDirectoryPath + imageName.split("/").pop().replace(" ", "_");
+       if (localImagePath.indexOf("_.") != -1) {
+          var arrayimagepath = localImagePath.split(".");
+          localImagePath = arrayimagepath.join("protocol.");
+          // localImagePath.replace("\_\.", "_protocol.");
+       }
        console.log(localImagePath);
     
        // Initialize the download process

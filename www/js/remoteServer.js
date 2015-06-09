@@ -74,6 +74,15 @@ function fetchUpdatesFromServer(){
 				        }
 				    }
 				}
+
+				for (i=0; i < data["protocols"].length; i++) {
+					var chartVal = data["protocols"][i].image;
+					if (chartVal != null && chartVal != "") {
+						if ($.inArray(chartVal, imagePaths) == -1) {
+							imagePaths.push(chartVal);
+						}
+					}
+				}
 		
 				for (j=0; j < imagePaths.length; j++) {
 					// Download the images from the remote server
