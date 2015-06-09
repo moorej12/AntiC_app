@@ -26,7 +26,7 @@ function createDoseAdjustmentArray() {
 
 	// Creates dose array
 	var doseArray = new Array();
-
+    var protocolArray = new Array();
 	// Populates tempArray with all dose adjustment with an existing chart
 	for (i=0; i < doseData.length; i++) {
 		// Gather the chart paths from the raw data
@@ -44,12 +44,39 @@ function createDoseAdjustmentArray() {
 		chartVal = chartValArray.join("protocol.");
 		if (chartVal != null) {
 			if ($.inArray(chartVal, doseArray) == -1) {
-				doseArray.push(chartVal);
+				protocolArray.push(chartVal);
 			}
 		}
 	}
+    var bothArray = new Array();
+    var i = 0;
+    var j = 0;
+    while (i < doseArray.length && j < protocolArray.length) {
+        var doseSplit = doseArray[i].split("/");
+        var protSplit = protocolArray[j].split("/");
+        var doseName = doseSplit[doseSplit.length];
+        console.log(doseName);
+        var protName = protSplit[protSplit.length];
+        console.log(protName);
+        if(doseName < protName) {
+            bothArray.push(doseArray[i]);
+            i++;
+        } else {
+            bothArray.push(protocolArray[j]);
+            j++;
+        }
+    }
+    if(i<doseArray.length) {
+        for(i = i; i < doseArray.length; i ++) {
+            bothArray.push(doseArray[i]);
+        }
+    } else {
+        for(j = j; j < protocolArray.length; j++) {
+            bothArray.push(protocolArray[j]);
+        }
+    }
 
-	return doseArray;
+	return bothArray;
 }
 
 /**
