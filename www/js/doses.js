@@ -49,16 +49,20 @@ function createDoseAdjustmentArray() {
 		}
 	}
     var bothArray = new Array();
-    var i = 0;
+    bothArray.push(doseArray[0]);
+    bothArray.push(doseArray[1]);
+    var i = 2;
     var j = 0;
     while (i < doseArray.length && j < protocolArray.length) {
+    	console.log(doseArray[i]);
+    	console.log(protocolArray[j]);
         var doseSplit = doseArray[i].split("/");
         var protSplit = protocolArray[j].split("/");
-        var doseName = doseSplit[doseSplit.length];
+        var doseName = doseSplit[doseSplit.length - 1];
         console.log(doseName);
-        var protName = protSplit[protSplit.length];
+        var protName = protSplit[protSplit.length - 1];
         console.log(protName);
-        if(doseName < protName) {
+        if(doseName.toLowerCase() < protName.toLowerCase()) {
             bothArray.push(doseArray[i]);
             i++;
         } else {
