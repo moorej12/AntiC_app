@@ -1,0 +1,9 @@
+{
+    "com.testfairy.cordova-plugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/testfairy/testfairy-cordova-plugin",
+            "subdir": "."
+        }
+    }
+}

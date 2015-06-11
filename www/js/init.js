@@ -39,6 +39,7 @@ var app = {
      */
     onDeviceReady: function() {
         console.log("onDeviceReady");
+	TestFairy.begin('8ecb5da84eaba1d0ab8601ccdfb7f7ca626763d4');
     	// Making sure menuList is empty
     	$('#menuList').empty();
     	localStorage.currentSort = "nameA";

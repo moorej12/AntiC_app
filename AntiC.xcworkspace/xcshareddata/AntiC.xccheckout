@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0D24FCD4-4849-4F83-9979-BD5158CC07FC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AntiC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>532CA4E99164C405D846815603E16AF589849EC5</key>
+		<string>https://github.com/moorej12/AntiC_app.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AntiC.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>532CA4E99164C405D846815603E16AF589849EC5</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/moorej12/AntiC_app.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>532CA4E99164C405D846815603E16AF589849EC5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>532CA4E99164C405D846815603E16AF589849EC5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AntiC_app</string>
+		</dict>
+	</array>
+</dict>
+</plist>
