@@ -222,7 +222,10 @@ function getUsualOralDose() {
         var arrayimagepath = imageName.split(".");
         imageName = arrayimagepath.join("protocol.");
         imageName = localStorage.fileSystemRoot + "/anticData/" + imageName;
-		dose = dose + '</br><a href="javascript:void(0)"" onclick=loadProtocolPage(this.name) ' +
+        if(dose != "") {
+        	dose += '</br>';
+        }
+		dose = dose + '<a href="javascript:void(0)"" onclick=loadProtocolPage(this.name) ' +
 			'name="' + imageName + '">Refer to Protocol</a>';
 	}
 	return dose;
